@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import register from "../assets/register.jpg?url";
-import { Lock } from "lucide-react";
-
+import { Lock, Eye, EyeOff } from "lucide-react";
 function Login() {
+  const [visible, setVisible] = useState(false);
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e.target[0].value);
@@ -35,14 +36,31 @@ function Login() {
                 className="w-full border px-1 border-blue-600 rounded"
               />
             </div>
-            <div>
+            <div className="relative">
               <label htmlFor="" className="block">
                 Password
               </label>
               <input
-                type="password"
+                type={visible == true ? "text" : "password"}
                 className="w-full border border-blue-600 rounded px-1"
               />
+              <div className="absolute top-7 right-4">
+                {!visible && (
+                  <Eye
+                    className="cursor-pointer"
+                    onClick={() => setVisible(true)}
+                    size={18}
+                  />
+                )}
+
+                {visible && (
+                  <EyeOff
+                    className="cursor-pointer"
+                    onClick={() => setVisible(false)}
+                    size={18}
+                  />
+                )}
+              </div>
             </div>
             <div className="flex justify-end mt-4 gap-1">
               <button
