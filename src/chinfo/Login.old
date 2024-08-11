@@ -1,0 +1,65 @@
+import React from "react";
+import registerBg from "../assets/register-bg.jpg?url";
+import { Lock } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const Login = () => {
+  return (
+    <div
+      id="inscription"
+      className=" relative bg-cover bg-center h-screen"
+      style={{ backgroundImage: `url(${registerBg})` }}
+    >
+      <div
+        id="filter"
+        className=" flex justify-center items-center absolute inset-0 bg-black/60 "
+      >
+        <div id="form-div" className="bg-white w-80 shadow-lg p-2 rounded pb-3">
+          <form action="" className="space-y-1">
+            <div className="flex flex-col justify-center items-center ">
+              <Lock />
+              <h1>Connexion</h1>
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block">
+                Email
+              </label>
+              <input
+                type="email"
+                className="border rounded border-cyan-800 w-full p-1"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="block">
+                Password
+              </label>
+              <input
+                type="password"
+                className="border rounded border-cyan-800 w-full p-1"
+              />
+            </div>
+            <div className="flex justify-between items-center gap-1 pt-3">
+              <Link
+                to="/register"
+                className="text-xs text-blue-600 hover:text-blue-700"
+              >
+                S'inscrire
+              </Link>
+              <div className="space-x-1">
+                <button className="border-2 px-2 rounded text-sm hover:bg-gray-100 ">
+                  Annuler
+                </button>
+                <button className="bg-blue-700  hover:bg-blue-800  px-2 rounded text-white text-sm">
+                  Se connecter
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
