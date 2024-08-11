@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import register from "../assets/register.jpg?url";
 import { Lock, Eye, EyeOff } from "lucide-react";
 function Login() {
@@ -10,6 +10,10 @@ function Login() {
     console.log(e.target[1].value);
     console.log(e.target[2].value);
   }
+
+  useEffect(() => {
+    console.log("message auto");
+  }, []);
 
   return (
     <div
