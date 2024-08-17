@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import register from "../assets/register.jpg?url";
 import { Lock, Eye, EyeOff } from "lucide-react";
+import { Link } from "react-router-dom";
+
 function Login() {
   const [visible, setVisible] = useState(false);
 
@@ -66,20 +68,25 @@ function Login() {
                 )}
               </div>
             </div>
-            <div className="flex justify-end mt-4 gap-1">
-              <button
-                className=" text-[15px]  border border-gray-500 hover:bg-gray-100
+            <div className="flex justify-between items-center mt-4 gap-1">
+              <Link to="/register" className="text-xs hover:text-blue-700">
+                S'inscrire
+              </Link>
+              <div className="flex justify-between items-center gap-1">
+                <button
+                  className=" text-[13px]  border border-gray-500 hover:bg-gray-100
                p-1 rounded px-2"
-              >
-                Annuller
-              </button>
-              <button
-                className=" text-[15px]  bg-blue-600 hover:bg-blue-700
+                >
+                  Annuller
+                </button>
+                <button
+                  className=" text-[13px]  bg-blue-600 hover:bg-blue-700
               text-white p-1 rounded px-2
               "
-              >
-                Se connecter
-              </button>
+                >
+                  Se connecter
+                </button>
+              </div>
             </div>
           </form>
         </div>
