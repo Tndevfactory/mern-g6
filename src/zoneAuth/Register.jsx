@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import register from "../assets/register.jpg?url";
 import { Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Register() {
+  const [errors, setErrors] = useState({});
+
   function validate(data) {
+    const re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     const errors = {};
 
     if (!data.name) {
@@ -17,8 +20,9 @@ function Register() {
       errors.email = "Veuillez entrer un email valide";
     }
 
-    if (!data.password) {
-      errors.password = "Veuillez entrer le champ password";
+    if (!re.test(data.password)) {
+      errors.password =
+        "Minimum 8 char, majsucule, minuscule, un nombre et un char speciale";
     }
 
     return errors;
@@ -33,8 +37,8 @@ function Register() {
     };
 
     // 1 etape de validation
-    const errors = validate(data);
-    console.log(errors);
+    const validationErrors = validate(data);
+    setErrors(validationErrors);
     // 2 un envoi vers nodejs : backend
   }
 
@@ -61,6 +65,9 @@ function Register() {
                 type="text"
                 className=" px-1 w-full border border-blue-600 rounded"
               />
+              {errors.name && (
+                <span className="text-red-600 text-xs">{errors.name}</span>
+              )}
             </div>
             <div>
               <label htmlFor="" className="block">
@@ -70,6 +77,9 @@ function Register() {
                 type="text"
                 className="w-full border px-1 border-blue-600 rounded"
               />
+              {errors.email && (
+                <span className="text-red-600 text-xs">{errors.email}</span>
+              )}
             </div>
             <div>
               <label htmlFor="" className="block">
@@ -79,6 +89,9 @@ function Register() {
                 type="password"
                 className="w-full border border-blue-600 rounded px-1"
               />
+              {errors.password && (
+                <span className="text-red-600 text-xs">{errors.password}</span>
+              )}
             </div>
             <div className="flex justify-between items-center mt-4 gap-1">
               <Link to="/login" className="text-xs hover:text-blue-700">
