@@ -35,11 +35,13 @@ function Register() {
       email: e.target[1].value,
       password: e.target[2].value,
     };
-
-    // 1 etape de validation
     const validationErrors = validate(data);
     setErrors(validationErrors);
-    // 2 un envoi vers nodejs : backend
+
+    if (Object.keys(validationErrors).length == 0) {
+      // 2 un envoi vers nodejs : backend
+      console.log("un envoi vers nodejs : backend");
+    }
   }
 
   return (

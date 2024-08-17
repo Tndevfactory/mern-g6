@@ -1,13 +1,9 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import vitrine from "../../assets/vitrine.jpg?url";
 
 const Home = () => {
   return (
     <div>
-      <Navbar />
-
       <section
         id="vitrine"
         className="relative h-[60vh] bg-cover bg-center"
@@ -80,8 +76,6 @@ const Home = () => {
           </p>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };

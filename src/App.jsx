@@ -9,12 +9,18 @@ import Pratiques from "./zonePublic/pages/Pratiques";
 import Login from "./zoneAuth/Login";
 import Register from "./zoneAuth/Register";
 
+// zone Layouts
+import PublicLayout from "./layouts/PublicLayout";
+
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/" element={<PublicLayout />}>
+          <Route index element={<Home />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/pratiques" element={<Pratiques />} />
