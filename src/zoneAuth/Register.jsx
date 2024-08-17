@@ -4,11 +4,38 @@ import { Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Register() {
+  function validate(data) {
+    const errors = {};
+
+    if (!data.name) {
+      errors.name = "Veuillez entrer le champ name";
+    }
+
+    if (!data.email) {
+      errors.email = "Veuillez entrer le champ email";
+    } else if (!/\S+@\S+\.\S+/.test(data.email)) {
+      errors.email = "Veuillez entrer un email valide";
+    }
+
+    if (!data.password) {
+      errors.password = "Veuillez entrer le champ password";
+    }
+
+    return errors;
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target[0].value);
-    console.log(e.target[1].value);
-    console.log(e.target[2].value);
+    const data = {
+      name: e.target[0].value,
+      email: e.target[1].value,
+      password: e.target[2].value,
+    };
+
+    // 1 etape de validation
+    const errors = validate(data);
+    console.log(errors);
+    // 2 un envoi vers nodejs : backend
   }
 
   return (
