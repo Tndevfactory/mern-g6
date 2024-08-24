@@ -41,6 +41,13 @@ function Register() {
     if (Object.keys(validationErrors).length == 0) {
       // 2 un envoi vers nodejs : backend
       console.log("un envoi vers nodejs : backend");
+      // enregistrer l'utilisateur
+      // role default user
+      // node js il va nous repondre
+      // if(role == user)
+      // orienter a sa page de profil
+      // if (role == admin)
+      // orienter vers la page admin
     }
   }
 
