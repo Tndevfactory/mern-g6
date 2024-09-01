@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import register from "../assets/register.jpg?url";
 import { Lock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { http } from "../feature/api";
 
 function Register() {
   const [errors, setErrors] = useState({});
@@ -30,6 +31,8 @@ function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    /* const users = http.get("/auth"); */
+
     const data = {
       name: e.target[0].value,
       email: e.target[1].value,
@@ -39,15 +42,7 @@ function Register() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length == 0) {
-      // 2 un envoi vers nodejs : backend
-      console.log("un envoi vers nodejs : backend");
-      // enregistrer l'utilisateur
-      // role default user
-      // node js il va nous repondre
-      // if(role == user)
-      // orienter a sa page de profil
-      // if (role == admin)
-      // orienter vers la page admin
+      http.post("/auth/register", data);
     }
   }
 
@@ -108,10 +103,11 @@ function Register() {
               </Link>
               <div className="flex justify-between items-center gap-1">
                 <button
+                  type="reset"
                   className=" text-[13px]  border border-gray-500 hover:bg-gray-100
                p-1 rounded px-2"
                 >
-                  Annuller
+                  Annuler
                 </button>
                 <button
                   className=" text-[13px]  bg-blue-600 hover:bg-blue-700
